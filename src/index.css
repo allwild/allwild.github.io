@@ -1,13 +1,57 @@
+:root {
+
+}
+
+/* TAG SELECTORS */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: mandatory
+}
+
 body {
+  overscroll-behavior: none;
+}
+
+html, body {
   margin: 0;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+
+
+/* CLASS SELECTORS */
+
+h5 {
+  
+  background-image: linear-gradient(
+    90deg,
+    #282828 0%,
+    rgb(36, 192, 145) 100%
+  );
+  transform: skew(-20deg);
+  color: rgb(132, 0, 255);
+  color: #0a6b4bd0;
+  color: #cfcfcfbf;
+  background-image: url('./pics/Group1.png');
+}
+
