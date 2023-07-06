@@ -24,7 +24,16 @@ const Works = ({ tileData }) => {
     scrollContainerRef.current.classList.remove("dragging");
   };
 
-  const handleDrag = (event) => {
+  const handleMouseDown = (event) => {
+    event.preventDefault(); // Prevent text selection during dragging
+    handleDragStart(event);
+  };
+
+  const handleMouseUp = () => {
+    handleDragEnd();
+  };
+
+  const handleMouseMove = (event) => {
     if (isDraggingRef.current) {
       const dragDistance = event.clientX - dragStartRef.current;
       const newScrollLeft = scrollStartRef.current - dragDistance;
@@ -47,10 +56,6 @@ const Works = ({ tileData }) => {
   const handleTileUnhover = () => {
     setHoveredTileIndex(null);
     setIsAnimating(false);
-  };
-
-  const handleMouseMove = (event) => {
-    setCursorPosition({ x: event.clientX, y: event.clientY });
   };
 
   const renderTiles = () => {
@@ -98,10 +103,9 @@ const Works = ({ tileData }) => {
 
       <CustomScrollContainer
         ref={scrollContainerRef}
-        onMouseDown={handleDragStart}
-        onMouseUp={handleDragEnd}
-        onMouseLeave={handleDragEnd}
-        onMouseMove={handleDrag}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
         onScroll={handleScroll}
       >
         {renderTiles()}
