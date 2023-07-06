@@ -215,6 +215,7 @@ const CustomScrollContainer = styled.div`
   overflow-x: scroll;
   scrollbar-width: none;
   z-index: 1;
+  scroll-behavior: smooth; /* Add this line */
 
   /* Scrollbar Styles for Chrome and Safari */
   &::-webkit-scrollbar {
