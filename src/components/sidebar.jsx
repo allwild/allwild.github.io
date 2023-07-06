@@ -60,11 +60,11 @@ const Container = styled.div`
   ${({ showSidebar }) =>
     showSidebar
       ? css`
-          animation: ${slideIn} 0.5s ease-in-out forwards;
+          animation: ${slideIn} 0.3s ease-in-out forwards;
         `
       : (!showSidebar && showSidebar!== null) 
       ? css`
-          animation: ${slideOut} 0.5s ease-in-out forwards;
+          animation: ${slideOut} 0.3s ease-in-out forwards;
         `
       : null};
   z-index: -1;
