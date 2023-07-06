@@ -47,13 +47,13 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/my_portfolio",
       element: (
         <Layout showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       ),
       children: [
         {
-          path: "/",
+          path: "/my_portfolio",
           element: (
             <>
               <Home showSidebar={showSidebar} />
