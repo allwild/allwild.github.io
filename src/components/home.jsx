@@ -1,18 +1,24 @@
+import React from "react";
 import styled from "styled-components";
 import TypingAnimation from "./flashingintro";
-import Pattern from "./pattern";
 import backgroundImage from "../pics/3080769.jpg";
 
 export default function Home({ showSidebar }) {
+  const scrollToContact = () => {
+    const contactElement = document.getElementById("contact");
+    if (contactElement) {
+      contactElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <Container className="bright" id="home">
         <TextAnimationContainer className="textanimation">
           <LeftContent>
             <TypingAnimation />
-            <ContactButton>Hit me up</ContactButton>
+            <ContactButton onClick={scrollToContact}>Hit me up</ContactButton>
           </LeftContent>
-          {/* <Pattern /> */}
         </TextAnimationContainer>
       </Container>
     </>
@@ -57,10 +63,6 @@ const ContactButton = styled.button`
   margin-top: 40px;
   cursor: pointer;
   border-width: 0.5px;
-
-  &:hover {
-    opacity: 0.8;
-  }
 `;
 
 const LeftContent = styled.div`
@@ -72,5 +74,4 @@ const LeftContent = styled.div`
   @media (max-width: 768px) {
     width: 100%;
   }
-`;
-
+}`;

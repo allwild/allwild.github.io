@@ -16,7 +16,7 @@ function App() {
       url: "artgallery",
       deployed: "https://artworks-af2d9.web.app/",
       description:
-        "A full-stack web application that allows users to browse and purchase art. The users can save and like their favorite pieces. Google's OAuth2.0 is used for authentication. User data is stored in Google's Firestore. ",
+        "A single page application that allows users to browse and purchase art. The users can save and like their favorite pieces. Google's OAuth2.0 is used for authentication. User data is stored in Google's Firestore. ",
       techStack: ["React", "Node.js", "Firebase", "Firestore"],
       github: "https://github.com/allwild/art-gallery",
       date: "2023 (in progress)",

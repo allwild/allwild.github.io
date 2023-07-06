@@ -40,7 +40,7 @@ const TypingAnimation = () => {
               setText(newText);
               index++;
 
-              setTimeout(addNextLetter, 100);
+              setTimeout(addNextLetter, 70);
             };
 
             setIsTyping(true);
@@ -70,7 +70,7 @@ const TypingAnimation = () => {
 
       setTimeout(() => {
         typeText(nextText, currentIndex + 1);
-      }, 100); // Delay between each character typing
+      }, 70); // Delay between each character typing
     };
 
     setTimeout(() => {
@@ -97,14 +97,15 @@ const Container = styled.div`
  `;
 
 const Text = styled.div`
-  font-size: 18px;
+  font-size: 17px;
   font-family: "Press Start 2P", cursive;
   color: #fff;
-  /* text-shadow: 3px 2px 0 #8400ff; */
   white-space: pre-line; /* Preserve line breaks */
   line-height: 76px;
-  /* height: 76px; */
   
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
 `;
 
 const blinkAnimation = keyframes`
