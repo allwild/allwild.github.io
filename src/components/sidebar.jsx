@@ -33,7 +33,7 @@ export default function Sidebar({ showSidebar, handleNavLinkClick }) {
 
 const slideIn = keyframes`
   from {
-    transform: translateY(-230%);
+    transform: translateY(-240%);
   }
   to {
     transform: translateY(0);
@@ -45,7 +45,7 @@ const slideOut = keyframes`
     transform: translateY(0);
   }
   to {
-    transform: translateY(-230%);
+    transform: translateY(-240%);
   }
 `;
 
