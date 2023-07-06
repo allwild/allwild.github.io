@@ -14,7 +14,7 @@ const Works = ({ tileData }) => {
 
   const handleDragStart = (event) => {
     isDraggingRef.current = true;
-    dragStartRef.current = event.clientX;
+    dragStartRef.current = getEventX(event);
     scrollStartRef.current = scrollContainerRef.current.scrollLeft;
     scrollContainerRef.current.classList.add("dragging");
   };
@@ -35,11 +35,37 @@ const Works = ({ tileData }) => {
 
   const handleMouseMove = (event) => {
     if (isDraggingRef.current) {
-      const dragDistance = event.clientX - dragStartRef.current;
+      const dragDistance = getEventX(event) - dragStartRef.current;
       const newScrollLeft = scrollStartRef.current - dragDistance;
       scrollContainerRef.current.scrollLeft = newScrollLeft;
       setScrollX(newScrollLeft);
     }
+  };
+
+  const handleTouchStart = (event) => {
+    handleDragStart(event.touches[0]);
+  };
+
+  const handleTouchEnd = () => {
+    handleDragEnd();
+  };
+
+  const handleTouchMove = (event) => {
+    if (isDraggingRef.current) {
+      const dragDistance = getEventX(event.touches[0]) - dragStartRef.current;
+      const newScrollLeft = scrollStartRef.current - dragDistance;
+      scrollContainerRef.current.scrollLeft = newScrollLeft;
+      setScrollX(newScrollLeft);
+    }
+  };
+
+  const getEventX = (event) => {
+    if (event.pageX) {
+      return event.pageX;
+    } else if (event.touches && event.touches[0]) {
+      return event.touches[0].pageX;
+    }
+    return 0;
   };
 
   const handleScroll = () => {
@@ -106,6 +132,9 @@ const Works = ({ tileData }) => {
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onTouchMove={handleTouchMove}
         onScroll={handleScroll}
       >
         {renderTiles()}
@@ -197,6 +226,7 @@ const CustomScrollContainer = styled.div`
   }
 
   @media (max-width: 768px) {
+    width: 100%;
     margin-bottom: 20px;
   }
 `;
