@@ -137,5 +137,6 @@ const Button = styled.button`
 
 const ButtonWrapper = styled.div`
 padding: 0 20px;
+margin-bottom: 40px;
 display: flex;
 gap: 20px;`
