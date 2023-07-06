@@ -60,7 +60,7 @@ const Works = ({ tileData }) => {
         onMouseEnter={() => handleTileHover(index)}
         onMouseLeave={handleTileUnhover}
       >
-        <Link to={`/${tileData.url}`}>
+        <Link to={`/my_portfolio/${tileData.url}`}>
           <TileImage
             src={tileData.image}
             alt={`Tile ${index + 1}`}
