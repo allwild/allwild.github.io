@@ -7,7 +7,10 @@ export default function Home({ showSidebar }) {
   const scrollToContact = () => {
     const contactElement = document.getElementById("contact");
     if (contactElement) {
-      contactElement.scrollIntoView({ behavior: "smooth" });
+      const navbarHeight = window.innerHeight * 0.1; // Assuming the navbar height is 10vh
+      const contactPosition = contactElement.getBoundingClientRect().top;
+      const scrollPosition = window.pageYOffset + contactPosition - navbarHeight;
+      window.scrollTo({ top: scrollPosition, behavior: "smooth" });
     }
   };
 
