@@ -74,6 +74,10 @@ const Container = styled.div`
     align-items: center;
     padding: 20px;
   }
+
+  @media (max-width: 768px) {
+    gap: 40px;
+  }
 `;
 
 const Title = styled.h2`

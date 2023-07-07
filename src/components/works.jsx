@@ -22,6 +22,7 @@ const Works = ({ tileData }) => {
   const handleDragEnd = () => {
     isDraggingRef.current = false;
     scrollContainerRef.current.classList.remove("dragging");
+    scrollContainerRef.current.style.scrollBehavior = "smooth"; // Add smooth scrolling behavior
   };
 
   const handleMouseDown = (event) => {
@@ -215,6 +216,7 @@ const CustomScrollContainer = styled.div`
   overflow-x: scroll;
   scrollbar-width: none;
   z-index: 1;
+  scroll-behavior: auto; /* Set the initial scroll behavior to auto */
 
   /* Scrollbar Styles for Chrome and Safari */
   &::-webkit-scrollbar {
@@ -238,6 +240,7 @@ const Tile = styled.div`
 
   position: relative;
   overflow: hidden;
+  scroll-snap-align: start; /* Add scroll snapping behavior */
 `;
 
 const TileTitle = styled.div`
@@ -268,6 +271,7 @@ const TileImage = styled.img`
   object-fit: cover;
   animation: ${({ isHovered }) =>
     isHovered ? css`${AnimateTile} 0.6s forwards` : css`${UnAnimateTile} 0.6s forwards`};
+  scroll-snap-stop: always; /* Stop scroll snapping during animations */
 `;
 
 export default Works;
