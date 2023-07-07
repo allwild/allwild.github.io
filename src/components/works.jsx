@@ -11,20 +11,17 @@ const Works = ({ tileData }) => {
   const [hoveredTileIndex, setHoveredTileIndex] = useState(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isAnimating, setIsAnimating] = useState(false);
-  const [isScrollBehaviorEnabled, setScrollBehaviorEnabled] = useState(true);
 
   const handleDragStart = (event) => {
     isDraggingRef.current = true;
     dragStartRef.current = getEventX(event);
     scrollStartRef.current = scrollContainerRef.current.scrollLeft;
     scrollContainerRef.current.classList.add("dragging");
-    setScrollBehaviorEnabled(false); // Disable smooth scrolling during dragging
   };
 
   const handleDragEnd = () => {
     isDraggingRef.current = false;
     scrollContainerRef.current.classList.remove("dragging");
-    setScrollBehaviorEnabled(true); // Enable smooth scrolling after dragging
   };
 
   const handleMouseDown = (event) => {
@@ -46,8 +43,7 @@ const Works = ({ tileData }) => {
   };
 
   const handleTouchStart = (event) => {
-    const touch = event.touches[0];
-    handleDragStart(touch);
+    handleDragStart(event.touches[0]);
   };
 
   const handleTouchEnd = () => {
@@ -56,8 +52,7 @@ const Works = ({ tileData }) => {
 
   const handleTouchMove = (event) => {
     if (isDraggingRef.current) {
-      const touch = event.touches[0];
-      const dragDistance = getEventX(touch) - dragStartRef.current;
+      const dragDistance = getEventX(event.touches[0]) - dragStartRef.current;
       const newScrollLeft = scrollStartRef.current - dragDistance;
       scrollContainerRef.current.scrollLeft = newScrollLeft;
       setScrollX(newScrollLeft);
@@ -115,11 +110,7 @@ const Works = ({ tileData }) => {
   };
 
   return (
-    <Section
-      id="work"
-      onMouseMove={handleMouseMove}
-      onTouchMove={handleTouchMove}
-    >
+    <Section id="work" onMouseMove={handleMouseMove}>
       <TitleContainer>
         <h1>Work</h1>
         <h2>Explore my creative realm</h2>
@@ -145,7 +136,6 @@ const Works = ({ tileData }) => {
         onTouchEnd={handleTouchEnd}
         onTouchMove={handleTouchMove}
         onScroll={handleScroll}
-        style={{ scrollBehavior: isScrollBehaviorEnabled ? "smooth" : "auto" }}
       >
         {renderTiles()}
       </CustomScrollContainer>
@@ -225,7 +215,6 @@ const CustomScrollContainer = styled.div`
   overflow-x: scroll;
   scrollbar-width: none;
   z-index: 1;
-  scroll-behavior: smooth; /* Add this line */
 
   /* Scrollbar Styles for Chrome and Safari */
   &::-webkit-scrollbar {
