@@ -1,89 +1,40 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes, css } from "styled-components";
 
+
+
 const Works = ({ tileData }) => {
-  const [scrollX, setScrollX] = useState(0);
-  const scrollContainerRef = useRef(null);
-  const dragStartRef = useRef(0);
-  const scrollStartRef = useRef(0);
-  const isDraggingRef = useRef(false);
   const [hoveredTileIndex, setHoveredTileIndex] = useState(null);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const handleDragStart = (event) => {
-    isDraggingRef.current = true;
-    dragStartRef.current = getEventX(event);
-    scrollStartRef.current = scrollContainerRef.current.scrollLeft;
-    scrollContainerRef.current.classList.add("dragging");
-  };
-
-  const handleDragEnd = () => {
-    isDraggingRef.current = false;
-    scrollContainerRef.current.classList.remove("dragging");
-    scrollContainerRef.current.style.scrollBehavior = "smooth"; // Add smooth scrolling behavior
-  };
-
-  const handleMouseDown = (event) => {
-    event.preventDefault(); // Prevent text selection during dragging
-    handleDragStart(event);
-  };
-
-  const handleMouseUp = () => {
-    handleDragEnd();
-  };
-
-  const handleMouseMove = (event) => {
-    if (isDraggingRef.current) {
-      const dragDistance = getEventX(event) - dragStartRef.current;
-      const newScrollLeft = scrollStartRef.current - dragDistance;
-      scrollContainerRef.current.scrollLeft = newScrollLeft;
-      setScrollX(newScrollLeft);
-    }
-  };
+  const [scrollX, setScrollX] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [scrollStartX, setScrollStartX] = useState(0);
 
   const handleTouchStart = (event) => {
-    handleDragStart(event.touches[0]);
-  };
-
-  const handleTouchEnd = () => {
-    handleDragEnd();
+    const touchX = event.touches[0].clientX;
+    setTouchStartX(touchX);
+    setScrollStartX(scrollX);
   };
 
   const handleTouchMove = (event) => {
-    if (isDraggingRef.current) {
-      const dragDistance = getEventX(event.touches[0]) - dragStartRef.current;
-      const newScrollLeft = scrollStartRef.current - dragDistance;
-      scrollContainerRef.current.scrollLeft = newScrollLeft;
-      setScrollX(newScrollLeft);
-    }
+    const touchX = event.touches[0].clientX;
+    const dragDistance = touchX - touchStartX;
+    const newScrollX = scrollStartX - dragDistance;
+    setScrollX(newScrollX);
   };
 
-  const getEventX = (event) => {
-    if (event.pageX) {
-      return event.pageX;
-    } else if (event.touches && event.touches[0]) {
-      return event.touches[0].pageX;
-    }
-    return 0;
-  };
-
-  const handleScroll = () => {
-    setScrollX(scrollContainerRef.current.scrollLeft);
-  };
 
   const handleTileHover = (index) => {
-    if (!isAnimating) {
+    if (hoveredTileIndex === null) {
       setHoveredTileIndex(index);
-      setIsAnimating(true);
     }
   };
 
   const handleTileUnhover = () => {
     setHoveredTileIndex(null);
-    setIsAnimating(false);
   };
+
+
 
   const renderTiles = () => {
     return tileData.map((tileData, index) => (
@@ -91,14 +42,10 @@ const Works = ({ tileData }) => {
         key={index}
         onMouseEnter={() => handleTileHover(index)}
         onMouseLeave={handleTileUnhover}
+        isHovered={hoveredTileIndex === index}
       >
         <Link to={`/my_portfolio/${tileData.url}`}>
-          <TileImage
-            src={tileData.image}
-            alt={`Tile ${index + 1}`}
-            onDragStart={(e) => e.preventDefault()} // Prevent default dragging behavior
-            isHovered={hoveredTileIndex === index}
-          />
+          <TileImage src={tileData.image} alt={`Tile ${index + 1}`} />
           {hoveredTileIndex === index && (
             <TileTitle>
               <span>{tileData.title}</span>
@@ -111,7 +58,7 @@ const Works = ({ tileData }) => {
   };
 
   return (
-    <Section id="work" onMouseMove={handleMouseMove}>
+    <Section id="work">
       <TitleContainer>
         <h1>Work</h1>
         <h2>Explore my creative realm</h2>
@@ -129,42 +76,15 @@ const Works = ({ tileData }) => {
       </TitleContainer>
 
       <CustomScrollContainer
-        ref={scrollContainerRef}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
         onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
         onTouchMove={handleTouchMove}
-        onScroll={handleScroll}
+        
       >
         {renderTiles()}
       </CustomScrollContainer>
     </Section>
   );
 };
-
-const AnimateTile = keyframes`
-  0% {
-    transform: scale(1);
-    filter: blur(0);
-  }
-  100% {
-    transform: scale(1.1);
-    filter: blur(5px);
-  }
-`;
-
-const UnAnimateTile = keyframes`
-  0% {
-    transform: scale(1.1);
-    filter: blur(5px);
-  }
-  100% {
-    transform: scale(1);
-    filter: blur(0);
-  }
-`;
 
 const Section = styled.section`
   width: 100%;
@@ -211,36 +131,15 @@ const TitleContainer = styled.div`
 
 const CustomScrollContainer = styled.div`
   display: flex;
+  width: 100%;
   align-items: center;
   gap: 30px;
   overflow-x: scroll;
   scrollbar-width: none;
+  scroll-behavior: smooth;
   z-index: 1;
-  scroll-behavior: auto; /* Set the initial scroll behavior to auto */
-
-  /* Scrollbar Styles for Chrome and Safari */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  &.dragging {
-    cursor: grabbing;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-`;
-
-const Tile = styled.div`
-  width: 280px;
-  height: 450px;
-  flex-shrink: 0;
-
-  position: relative;
-  overflow: hidden;
-  scroll-snap-align: start; /* Add scroll snapping behavior */
+  touch-action: pan-x; /* Allow vertical scrolling on touch devices */
+  transition: transform 0.3s ease-out; /* Add a transition for smooth scrolling */
 `;
 
 const TileTitle = styled.div`
@@ -257,6 +156,8 @@ const TileTitle = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
   font-family: "Press Start 2P", cursive;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 
   font-size: 18px;
 
@@ -265,13 +166,26 @@ const TileTitle = styled.div`
   }
 `;
 
+const Tile = styled.div`
+  width: 280px;
+  height: 450px;
+  flex-shrink: 0;
+
+  position: relative;
+  overflow: hidden;
+  scroll-snap-align: start; /* Add scroll snapping behavior */
+
+  &:hover {
+    ${TileTitle} {
+      opacity: 1;
+    }
+  }
+`;
+
 const TileImage = styled.img`
-width: 100%;
-height: 100%;
-object-fit: cover;
-animation: ${({ isHovered }) =>
-  isHovered ? css`${AnimateTile} 0.6s forwards` : css`${UnAnimateTile} 0.6s forwards`};
-scroll-snap-stop: always; /* Stop scroll snapping during animations */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export default Works;
