@@ -266,12 +266,12 @@ const TileTitle = styled.div`
 `;
 
 const TileImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  animation: ${({ isHovered }) =>
-    isHovered ? css`${AnimateTile} 0.6s forwards` : css`${UnAnimateTile} 0.6s forwards`};
-  scroll-snap-stop: always; /* Stop scroll snapping during animations */
+width: 100%;
+height: 100%;
+object-fit: cover;
+animation: ${({ isHovered }) =>
+  isHovered ? css`${AnimateTile} 0.6s forwards` : css`${UnAnimateTile} 0.6s forwards`};
+scroll-snap-stop: always; /* Stop scroll snapping during animations */
 `;
 
 export default Works;
