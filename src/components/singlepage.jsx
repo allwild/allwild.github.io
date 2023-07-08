@@ -77,6 +77,8 @@ const Container = styled.div`
 
   @media (max-width: 768px) {
     gap: 0px;
+    height: auto;
+    justify-content: flex-start;
   }
 `;
 
