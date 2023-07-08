@@ -9,6 +9,7 @@ const Works = ({ tileData }) => {
   const [scrollX, setScrollX] = useState(0);
   const [touchStartX, setTouchStartX] = useState(0);
   const [scrollStartX, setScrollStartX] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const handleTouchStart = (event) => {
     const touchX = event.touches[0].clientX;
@@ -25,13 +26,15 @@ const Works = ({ tileData }) => {
 
 
   const handleTileHover = (index) => {
-    if (hoveredTileIndex === null) {
+    if (!isAnimating) {
       setHoveredTileIndex(index);
+      setIsAnimating(true);
     }
   };
 
   const handleTileUnhover = () => {
     setHoveredTileIndex(null);
+    setIsAnimating(false);
   };
 
 
@@ -42,10 +45,13 @@ const Works = ({ tileData }) => {
         key={index}
         onMouseEnter={() => handleTileHover(index)}
         onMouseLeave={handleTileUnhover}
-        isHovered={hoveredTileIndex === index}
+        
       >
         <Link to={`/my_portfolio/${tileData.url}`}>
-          <TileImage src={tileData.image} alt={`Tile ${index + 1}`} />
+          <TileImage 
+          src={tileData.image} 
+          alt={`Tile ${index + 1}`}
+          isHovered={hoveredTileIndex === index} />
           {hoveredTileIndex === index && (
             <TileTitle>
               <span>{tileData.title}</span>
@@ -78,13 +84,34 @@ const Works = ({ tileData }) => {
       <CustomScrollContainer
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
-        
       >
         {renderTiles()}
       </CustomScrollContainer>
     </Section>
   );
 };
+
+const AnimateTile = keyframes`
+  0% {
+    transform: scale(1);
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(1.1);
+    filter: blur(5px);
+  }
+`;
+
+const UnAnimateTile = keyframes`
+  0% {
+    transform: scale(1.1);
+    filter: blur(5px);
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0);
+  }
+`;
 
 const Section = styled.section`
   width: 100%;
@@ -186,6 +213,8 @@ const TileImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  animation: ${({ isHovered }) =>
+    isHovered ? css`${AnimateTile} 0.6s forwards` : css`${UnAnimateTile} 0.6s forwards`};
 `;
 
 export default Works;
