@@ -1,19 +1,14 @@
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 
 export default function SinglePage({ details }) {
-
-  const dynamicURL = details.deployed;
-  const dynamicGitURL = details.github;
-
   useEffect(() => {
-    const dynamicLink = document.getElementById("dynamicLink");
-    const dynamicGitLink = document.getElementById("dynamicGitLink");
-    dynamicLink.setAttribute("href", dynamicURL);
-    dynamicGitLink.setAttribute("href", dynamicGitURL);
-  }, [dynamicURL , dynamicGitURL]);
-  
+    const timeout = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 5);
+    return () => clearTimeout(timeout);
+  }, [details]);
 
   return (
     <Container img={details.image}>
@@ -34,10 +29,10 @@ export default function SinglePage({ details }) {
             <a id="dynamicLink" href="" target="_blank">To Site</a>
           </Button>
           <Button>
-          <a id="dynamicGitLink" href="" target="_blank">
-            <i class="fa-brands fa-github fa-xl"></i>
-            Github
-          </a>
+            <a id="dynamicGitLink" href="" target="_blank">
+              <i className="fa-brands fa-github fa-xl"></i>
+              Github
+            </a>
           </Button>
         </ButtonWrapper>
       </DetailsWrapper>
@@ -55,18 +50,17 @@ const Container = styled.div`
   padding: 20px;
   margin-top: 10vh;
   background-image: linear-gradient(
-      rgba(0, 0, 0, 0.9),
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 1)
-    ),
-    url(${(props) => props.img});
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 1)
+  ),
+  url(${(props) => props.img});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   box-sizing: border-box;
 
   .link {
-    
     font-size: 20px;
     color: #fff;
     text-decoration: none;
@@ -74,6 +68,12 @@ const Container = styled.div`
     align-items: center;
     padding: 20px;
   }
+
+  /* Scroll to the top when the component mounts */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  scroll-margin-top: 80px;
 
   @media (max-width: 768px) {
     gap: 0px;
@@ -107,8 +107,8 @@ const TextBox = styled.div`
   width: 50%;
 
   @media (max-width: 768px) {
-  
-    width: 100%;}
+    width: 100%;
+  }
 `;
 
 const DetailsWrapper = styled.div`
@@ -142,7 +142,8 @@ const Button = styled.button`
 `;
 
 const ButtonWrapper = styled.div`
-padding: 0 20px;
-margin-bottom: 40px;
-display: flex;
-gap: 20px;`
+  padding: 0 20px;
+  margin-bottom: 40px;
+  display: flex;
+  gap: 20px;
+`;

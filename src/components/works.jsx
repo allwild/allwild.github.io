@@ -36,7 +36,7 @@ const Works = ({ tileData }) => {
     setHoveredTileIndex(null);
     setIsAnimating(false);
   };
-
+    
 
 
   const renderTiles = () => {
@@ -45,7 +45,6 @@ const Works = ({ tileData }) => {
         key={index}
         onMouseEnter={() => handleTileHover(index)}
         onMouseLeave={handleTileUnhover}
-        
       >
         <Link to={`/my_portfolio/${tileData.url}`}>
           <TileImage 
@@ -158,7 +157,6 @@ const TitleContainer = styled.div`
 
 const CustomScrollContainer = styled.div`
   display: flex;
-  width: 100%;
   align-items: center;
   gap: 30px;
   overflow-x: scroll;
@@ -167,6 +165,10 @@ const CustomScrollContainer = styled.div`
   z-index: 1;
   touch-action: pan-x; /* Allow vertical scrolling on touch devices */
   transition: transform 0.3s ease-out; /* Add a transition for smooth scrolling */
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const TileTitle = styled.div`
