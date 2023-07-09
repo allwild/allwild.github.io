@@ -58,7 +58,7 @@ function App() {
             <>
               <Home showSidebar={showSidebar} />
               <About />
-              <Works tileData={tileData} />
+              <Works tileData={tileData}/>
               <Contact />
             </>
           ),
