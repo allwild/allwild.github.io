@@ -1,19 +1,19 @@
 import styled, { css, keyframes } from "styled-components";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 
 export default function Sidebar({ showSidebar, handleNavLinkClick }) {
-  useEffect(() => {
-    console.log(showSidebar);
-  }, [showSidebar]);
-
+  
   return (
     <Container showSidebar={showSidebar}>
       <List>
-        <ListItem className="about li_about" onClick={handleNavLinkClick}>
-          <a href="#about">
-            About
-          </a>
+        <ListItem className="about li_about">
+          <Link to="/my_portfolio/">
+            <a href="#about" onClick={handleNavLinkClick}>
+              About
+            </a>
+          </Link>
         </ListItem>
         <ListItem>
           <a href="#work" onClick={handleNavLinkClick}>
@@ -111,5 +111,3 @@ const ListItem = styled.li`
     
   }
 `;
-
-

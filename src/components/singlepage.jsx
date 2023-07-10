@@ -3,6 +3,18 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export default function SinglePage({ details }) {
+
+  const dynamicURL = details.deployed;
+  const dynamicGitURL = details.github;
+
+  useEffect(() => {
+    const dynamicLink = document.getElementById("dynamicLink");
+    const dynamicGitLink = document.getElementById("dynamicGitLink");
+    dynamicLink.setAttribute("href", dynamicURL);
+    dynamicGitLink.setAttribute("href", dynamicGitURL);
+  }, [dynamicURL , dynamicGitURL]);
+
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       window.scrollTo(0, 0);
