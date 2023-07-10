@@ -7,6 +7,7 @@ import Works from "./components/works";
 import Contact from "./components/contact";
 import Layout from "./components/layout";
 import SinglePage from "./components/singlepage";
+import Footer from "./components/footer";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(null);
@@ -60,12 +61,13 @@ function App() {
               <About />
               <Works tileData={tileData}/>
               <Contact />
+              <Footer />
             </>
           ),
         },
         ...tileData.map((tile) => ({
           path: `/my_portfolio/${tile.url}`,
-          element: <SinglePage details={tile} />,
+          element: <SinglePage details={tile}/>,
         })),
       ],
     },

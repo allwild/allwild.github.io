@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TypingAnimation from "./flashingintro";
-import backgroundImage from "../pics/3080769.jpg";
+import backgroundImage from "../pics/91663.jpg";
 
 export default function Home({ showSidebar }) {
   const scrollToContact = () => {
