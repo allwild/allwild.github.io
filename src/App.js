@@ -48,13 +48,13 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/my_portfolio/",
+      path: "/",
       element: (
         <Layout showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       ),
       children: [
         {
-          path: "/my_portfolio/",
+          path: "/",
           element: (
             <>
               <Home showSidebar={showSidebar} />
@@ -66,7 +66,7 @@ function App() {
           ),
         },
         ...tileData.map((tile) => ({
-          path: `/my_portfolio/${tile.url}`,
+          path: `/${tile.url}`,
           element: <SinglePage details={tile}/>,
         })),
       ],

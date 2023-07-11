@@ -24,7 +24,7 @@ export default function SinglePage({ details }) {
 
   return (
     <Container img={details.image}>
-      <Link to="/my_portfolio/" className="link">
+      <Link to="/" className="link">
         <Exit className="material-symbols-outlined">keyboard_backspace</Exit>
         Go back
       </Link>

@@ -9,7 +9,7 @@ export default function Sidebar({ showSidebar, handleNavLinkClick }) {
     <Container showSidebar={showSidebar}>
       <List>
         <ListItem className="about li_about">
-          <Link to="/my_portfolio/">
+          <Link to="/">
             <a href="#about" onClick={handleNavLinkClick}>
               About
             </a>
