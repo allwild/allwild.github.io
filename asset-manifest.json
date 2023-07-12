@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/static/css/main.0c6215e6.css",
-    "main.js": "/static/js/main.ada2c546.js",
+    "main.js": "/static/js/main.db98bd46.js",
     "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
-    "static/media/almooos3.png": "/static/media/almooos3.e1e3e9e0d2da14e1987d.png",
-    "static/media/almooos2.png": "/static/media/almooos2.317e04c4b5ddf4197035.png",
     "static/media/nasa.png": "/static/media/nasa.47c691b5a260e4313bba.png",
+    "static/media/almooos2.jpeg": "/static/media/almooos2.f67ae99648c3c63fa2b9.jpeg",
+    "static/media/almooos3.jpeg": "/static/media/almooos3.b1ee71281360c8a03cff.jpeg",
     "static/media/artgallery.png": "/static/media/artgallery.d3b4706657d51355a17e.png",
     "static/media/91663.jpg": "/static/media/91663.a6a1876eba27c8b33e0d.jpg",
     "static/media/dig.png": "/static/media/dig.08a500b604429fef5084.png",
     "static/media/Almos_Wildanger_CV.pdf": "/static/media/Almos_Wildanger_CV.7954a676464b7daa22a4.pdf",
     "index.html": "/index.html",
     "main.0c6215e6.css.map": "/static/css/main.0c6215e6.css.map",
-    "main.ada2c546.js.map": "/static/js/main.ada2c546.js.map",
+    "main.db98bd46.js.map": "/static/js/main.db98bd46.js.map",
     "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0c6215e6.css",
-    "static/js/main.ada2c546.js"
+    "static/js/main.db98bd46.js"
   ]
 }
