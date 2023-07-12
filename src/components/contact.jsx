@@ -28,7 +28,7 @@ export default function Contact() {
             </a>
         </ButtonContainer>
       </TextBox>
-        <FormDiv>
+        {/* <FormDiv>
             <Form>
                 <LabelFieldWrapper>
                     <label for="name">NAME</label>
@@ -47,7 +47,7 @@ export default function Contact() {
 
                 
             </Form>
-        </FormDiv>
+        </FormDiv> */}
     </Container>
   );
 }
@@ -64,7 +64,7 @@ const Container = styled.section`
 
 const TextBox = styled.div`
 background-color: #282828;
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -178,7 +178,8 @@ const ButtonContainer = styled.div`
   justify-content: space-between;
   gap: 20px;
 
-    a {
-        text-decoration: none;
-    }
+  a {
+      text-decoration: none;
+  }
+
 `;
