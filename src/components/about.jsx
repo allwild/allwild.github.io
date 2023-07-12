@@ -5,7 +5,7 @@ export default function About() {
   return (
     <Container id="about">
       <RowContainer>
-        <MainImg src={require("../pics/almooos3.png")} />
+        <MainImg src={require("../pics/almooos3.jpeg")} />
         <TextContent className="a">
           <h1>About</h1>
           <p>
@@ -157,7 +157,7 @@ export default function About() {
             </div>
           </IconWrapper>
         </TextContent>
-        <MainImg src={require("../pics/almooos2.png")} />
+        <MainImg src={require("../pics/almooos2.jpeg")} />
       </LastRowContainer>
     </Container>
   );
