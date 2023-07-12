@@ -16,13 +16,13 @@ export default function Contact() {
         <ButtonContainer>
             <a href="https://www.linkedin.com/in/awild3/" target="_blank">
                 <Button className="linkedin">
-                    <i class="fa-brands fa-linkedin fa-xl"></i>
+                    <i className="fa-brands fa-linkedin fa-xl"></i>
                     LinkedIn
                 </Button>
             </a>
             <a href="mailto:almos.wildanger@gmail.com" className="e-mail-link">
                 <Button>
-                    <i class="fa-sharp fa-regular fa-envelope fa-xl"></i>
+                    <i className="fa-sharp fa-regular fa-envelope fa-xl"></i>
                     Send
                 </Button>
             </a>

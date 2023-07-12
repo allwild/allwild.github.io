@@ -118,7 +118,7 @@ const Section = styled.section`
   align-items: center;
   background-color: #000;
   gap: 100px;
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   padding: 40px;
   overflow: hidden;
 

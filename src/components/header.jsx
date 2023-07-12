@@ -158,17 +158,6 @@ const List = styled.ul`
   }
 }`;
 
-const menuLineAnimation = keyframes`
-  0% {
-    transform: scaleX(1);
-  }
-  50% {
-    transform: scaleX(0.5);
-  }
-  100% {
-    transform: scaleX(1);
-  }
-`;
 
 const bottomLineAnimation = keyframes`
   0% {

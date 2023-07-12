@@ -64,13 +64,12 @@ function App() {
               <Footer />
             </>
           ),
-        },
-        ...tileData.map((tile) => ({
+        }],
+    },
+      ...tileData.map((tile) => ({
           path: `/${tile.url}`,
           element: <SinglePage details={tile}/>,
-        })),
-      ],
-    },
+        }))
   ]);
 
   return (

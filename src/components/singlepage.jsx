@@ -60,7 +60,6 @@ const Container = styled.div`
   gap: 100px;
   flex-direction: column;
   padding: 20px;
-  margin-top: 10vh;
   background-image: linear-gradient(
     rgba(0, 0, 0, 0.9),
     rgba(0, 0, 0, 0.7),
