@@ -169,7 +169,7 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   z-index: 1;
-  height: calc(100vh - 10vh);
+  height: calc(100vh - 80px);
 
   @media (max-width: 768px) {
     height: auto;

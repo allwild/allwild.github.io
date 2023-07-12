@@ -117,7 +117,7 @@ const Nav = styled.nav`
   background-color: rgba(0, 0, 0, 1);
   color: #e8e8e8;
   padding: 0 2rem;
-  height: 10vh;
+  height: 80px;
   width: 100%;
 `
 
