@@ -37,15 +37,17 @@ export default function SinglePage({ details }) {
         {/* <Image src={details.image} alt={details.title} /> */}
         <hr />
         <ButtonWrapper>
-          <Button>
-            <a id="dynamicLink" href="" target="_blank">To Site</a>
-          </Button>
-          <Button>
-            <a id="dynamicGitLink" href="" target="_blank">
+          <a id="dynamicLink" href="" target="_blank">
+            <Button>
+              To Site
+            </Button>
+          </a>
+          <a id="dynamicGitLink" href="" target="_blank">
+            <Button>
               <i className="fa-brands fa-github fa-xl"></i>
               Github
-            </a>
-          </Button>
+            </Button>
+          </a>
         </ButtonWrapper>
       </DetailsWrapper>
     </Container>
@@ -129,7 +131,7 @@ const DetailsWrapper = styled.div`
 
 const Button = styled.button`
   background-color: #8400ff;
-  color: #fff;
+  
   width: 150px;
   height: 50px;
   font-family: "Press Start 2P", cursive;
@@ -137,15 +139,11 @@ const Button = styled.button`
   margin-top: 40px;
   cursor: pointer;
   border-width: 0.5px;
-
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: #fff;
-    text-decoration: none;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #fff;
 
   &:hover {
     opacity: 0.8;
@@ -157,4 +155,8 @@ const ButtonWrapper = styled.div`
   margin-bottom: 40px;
   display: flex;
   gap: 20px;
+
+  a {
+    text-decoration: none;
+  }
 `;
