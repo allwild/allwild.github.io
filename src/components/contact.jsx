@@ -14,19 +14,28 @@ export default function Contact() {
             </p>
         </ContactTextWrapper>
         <ButtonContainer>
-            <a href="https://www.linkedin.com/in/awild3/" target="_blank">
-                <Button className="linkedin">
-                    <i className="fa-brands fa-linkedin fa-xl"></i>
-                    LinkedIn
-                </Button>
-            </a>
+            <LinkedInCVWrapper>
+              <a href="https://www.linkedin.com/in/awild3/" target="_blank">
+                  <Button className="linkedin">
+                      <i className="fa-brands fa-linkedin fa-xl"></i>
+                      LinkedIn
+                  </Button>
+              </a>
+              <a href={require("../docs/Almos_Wildanger_CV.pdf")} target="_blank">
+                  <Button className="cv">
+                    <i className="fa-regular fa-file fa-xl"></i>
+                    CV
+                  </Button>
+              </a>
+            </LinkedInCVWrapper>
             <a href="mailto:almos.wildanger@gmail.com" className="e-mail-link">
-                <Button>
-                    <i className="fa-sharp fa-regular fa-envelope fa-xl"></i>
-                    Send
-                </Button>
+              <Button className="mail">
+                  <i className="fa-sharp fa-regular fa-envelope fa-xl"></i>
+                  Contact
+              </Button>
             </a>
         </ButtonContainer>
+        
       </TextBox>
         {/* <FormDiv>
             <Form>
@@ -70,7 +79,9 @@ background-color: #282828;
   justify-content: center;
   align-items: flex-start;
   gap: 20px;
-    padding: 40px;
+  padding: 40px;
+
+  
 
     @media (max-width: 768px) {
       padding: 20px;
@@ -133,11 +144,6 @@ const ContactTextWrapper = styled.div`
     margin: 0;
   }
   
-  .e-mail-link {
-    color: #fff;
-    text-decoration: none;
-    font-style: italic;
-  }
   `
 
 const Caption = styled.h1`
@@ -162,11 +168,17 @@ const Button = styled.button`
   height: 50px;
   font-family: "Press Start 2P", cursive;
   box-shadow: 3px 2px 0 #14db99;
-  margin-top: 40px;
+  margin-top: 20px;
   cursor: pointer;
   border-width: 0.5px;
 
-  
+  &.mail {
+    margin-top: 20px;
+    background-color: #16c98e;
+    box-shadow: 3px 2px 0 #8400ff;
+    color: #000;
+    border-color: #8400ff;
+  }
 
   &:hover {
     opacity: 0.8;
@@ -179,7 +191,17 @@ const ButtonContainer = styled.div`
   gap: 20px;
 
   a {
-      text-decoration: none;
+    text-decoration: none;
   }
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  
+  }
 `;
+
+const LinkedInCVWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+`

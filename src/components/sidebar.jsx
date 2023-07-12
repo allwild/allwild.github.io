@@ -1,34 +1,25 @@
 import styled, { css, keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 
-
 export default function Sidebar({ showSidebar, handleNavLinkClick }) {
-  
   return (
     <Container showSidebar={showSidebar}>
       <List>
-        <ListItem className="about li_about">
+        <ListItem className="about li_about" onClick={handleNavLinkClick}>
           <Link to="/">
-            <a href="#about" onClick={handleNavLinkClick}>
-              About
-            </a>
+            <a href="#about">About</a>
           </Link>
         </ListItem>
-        <ListItem>
-          <a href="#work" onClick={handleNavLinkClick}>
-            Work
-          </a>
+        <ListItem onClick={handleNavLinkClick}>
+          <a href="#work">Work</a>
         </ListItem>
-        <ListItem className="li_contact">
-          <a href="#contact" onClick={handleNavLinkClick}>
-            Contact
-          </a>  
+        <ListItem className="li_contact" onClick={handleNavLinkClick}>
+          <a href="#contact">Contact</a>
         </ListItem>
       </List>
     </Container>
   );
 }
-
 
 const slideIn = keyframes`
   from {
@@ -61,7 +52,7 @@ const Container = styled.div`
       ? css`
           animation: ${slideIn} 0.3s ease-in-out forwards;
         `
-      : (!showSidebar && showSidebar!== null) 
+      : (!showSidebar && showSidebar !== null)
       ? css`
           animation: ${slideOut} 0.3s ease-in-out forwards;
         `
@@ -76,9 +67,9 @@ const List = styled.ul`
   padding: 0;
 
   .li_about {
-    border-bottom: none;  
+    border-bottom: none;
   }
-  
+
   .li_contact {
     border-top: none;
   }
@@ -103,10 +94,14 @@ const ListItem = styled.li`
   a {
     text-decoration: none;
     color: inherit;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &:hover {
     color: #14db99;
-    
   }
-`;
+}`;
