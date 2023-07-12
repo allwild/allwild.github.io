@@ -33,7 +33,7 @@ export default function Sidebar({ showSidebar, handleNavLinkClick }) {
 
 const slideIn = keyframes`
   from {
-    transform: translateY(-150px);
+    transform: translateY(-200%);
   }
   to {
     transform: translateY(0);
@@ -45,7 +45,7 @@ const slideOut = keyframes`
     transform: translateY(0);
   }
   to {
-    transform: translateY(-150px);
+    transform: translateY(-200%);
   }
 `;
 
@@ -56,7 +56,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: black;
-  transform: translateX(-150px);
+  transform: translateX(-150%);
   ${({ showSidebar }) =>
     showSidebar
       ? css`
