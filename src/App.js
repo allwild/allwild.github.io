@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Header from "./components/header";
 import Home from "./components/home";
 import About from "./components/about";
 import Works from "./components/works";
@@ -11,6 +10,12 @@ import Footer from "./components/footer";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(null);
+
+  useEffect(() => {
+    console.log(showSidebar)
+  }, [showSidebar])
+
+
   const tileData = [
     {
       title: "Art Gallery",
@@ -74,9 +79,7 @@ function App() {
 
   return (
     <div className="App">
-      <RouterProvider router={router}>
-        <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
-      </RouterProvider>
+      <RouterProvider router={router}/>
     </div>
   );
 }

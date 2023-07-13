@@ -48,7 +48,7 @@ const Container = styled.div`
   background-color: black;
   transform: translateX(-150%);
   ${({ showSidebar }) =>
-    showSidebar
+    showSidebar 
       ? css`
           animation: ${slideIn} 0.3s ease-in-out forwards;
         `

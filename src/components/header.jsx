@@ -4,7 +4,7 @@ import Sidebar from "./sidebar";
 
 
 
-export default function Header({ showSidebar, setShowSidebar }) {
+export default function Header({ showSidebar = false, setShowSidebar }) {
   const [showMenuIcon, setShowMenuIcon] = useState(false);
 
   useEffect(() => {
@@ -25,50 +25,47 @@ export default function Header({ showSidebar, setShowSidebar }) {
     };
   }, []);
 
-
   const handleMenuClick = () => {
     setShowSidebar(!showSidebar);
   };
 
   const handleNavLinkClick = (event) => {
-  event.preventDefault();
-  let targetId;
+    event.preventDefault();
+    let targetId;
 
-  if (event.target.hasAttribute("href")) {
-    targetId = event.target.getAttribute("href").slice(1);
-  } else {
-    targetId = event.target.classList[0];
-  }
+    if (event.target.hasAttribute("href")) {
+      targetId = event.target.getAttribute("href").slice(1);
+    } else {
+      targetId = event.target.classList[0];
+    }
 
-  const targetElement = document.getElementById(targetId);
-  if (targetElement) {
-    const headerHeight = document.querySelector("nav").offsetHeight;
-    const targetPosition = targetElement.offsetTop - headerHeight;
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const headerHeight = document.querySelector("nav").offsetHeight;
+      const targetPosition = targetElement.offsetTop - headerHeight;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+      handleMenuClick();
+    }
+  };
+
+  const handleLogoClick = () => {
+    if (showSidebar !== null) {
+      setShowSidebar(null);
+    }
+
     window.scrollTo({
-      top: targetPosition,
+      top: 0,
       behavior: "smooth",
     });
-    handleMenuClick();
-  }
-};
-
-
-const handleLogoClick = () => {
-  if (showSidebar !== null) {
-    setShowSidebar(null);
-  }
-  
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
-
+  };
 
   return (
     <NavWrapper>
       <Nav>
-          <Logo src={require("../pics/Group1.png")} onClick={handleLogoClick}/>
+        <Logo src={require("../pics/Group1.png")} onClick={handleLogoClick} />
         {showMenuIcon ? (
           <>
             <MenuIcon onClick={handleMenuClick}>
@@ -76,11 +73,17 @@ const handleLogoClick = () => {
               <MenuLineMiddle show={showSidebar} />
               <MenuLineBottom show={showSidebar} />
             </MenuIcon>
-            <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} handleNavLinkClick={handleNavLinkClick}/>
+            {(showSidebar || showSidebar === null) && (
+              <Sidebar
+                showSidebar={showSidebar}
+                setShowSidebar={setShowSidebar}
+                handleNavLinkClick={handleNavLinkClick}
+              />
+            )}
           </>
         ) : (
           <List>
-            <li >
+            <li>
               <a href="#about" onClick={handleNavLinkClick}>
                 About
               </a>
@@ -91,17 +94,17 @@ const handleLogoClick = () => {
               </a>
             </li>
             <li>
-              <a href="#contact" onClick={handleNavLinkClick}> 
-              Contact
-              </a>  
+              <a href="#contact" onClick={handleNavLinkClick}>
+                Contact
+              </a>
             </li>
           </List>
-      
         )}
       </Nav>
     </NavWrapper>
   );
 }
+
 
 const NavWrapper = styled.div`
   z-index: 100;
