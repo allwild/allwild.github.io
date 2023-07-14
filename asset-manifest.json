@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.0c6215e6.css",
-    "main.js": "/static/js/main.1b1fe322.js",
+    "main.js": "/static/js/main.6e483b23.js",
     "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
     "static/media/nasa.png": "/static/media/nasa.47c691b5a260e4313bba.png",
     "static/media/almooos2.jpeg": "/static/media/almooos2.f67ae99648c3c63fa2b9.jpeg",
@@ -12,11 +12,11 @@
     "static/media/Almos_Wildanger_CV.pdf": "/static/media/Almos_Wildanger_CV.7954a676464b7daa22a4.pdf",
     "index.html": "/index.html",
     "main.0c6215e6.css.map": "/static/css/main.0c6215e6.css.map",
-    "main.1b1fe322.js.map": "/static/js/main.1b1fe322.js.map",
+    "main.6e483b23.js.map": "/static/js/main.6e483b23.js.map",
     "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0c6215e6.css",
-    "static/js/main.1b1fe322.js"
+    "static/js/main.6e483b23.js"
   ]
 }
