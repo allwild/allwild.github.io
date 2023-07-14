@@ -24,7 +24,7 @@ export default function Contact() {
               <a href={require("../docs/Almos_Wildanger_CV.pdf")} target="_blank">
                   <Button className="cv">
                     <i className="fa-regular fa-file fa-xl"></i>
-                    CV
+                    Resume
                   </Button>
               </a>
             </LinkedInCVWrapper>
